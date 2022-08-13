@@ -1,0 +1,20 @@
+{
+  "user": [
+    {
+      "fname": "Rahul",
+      "lname": "Garud",
+      "email": "rg2016@gmail.com",
+      "dateOfBirth": "2022-08-13",
+      "description": "localStorage.getItem(\"user\")",
+      "id": 1
+    },
+    {
+      "fname": "Chandrakant",
+      "lname": "Deore",
+      "email": "chandudeore2016@gmail.com",
+      "dateOfBirth": "1999-05-13",
+      "description": "I was attracted towards the software industry after I completed my 12th. After that, I was looking out for opportunities in computer science. I came to know about Masai School and decided to join it as I was interested in full-stack web development.\nMasai provides military type coding bootcamp to learn MERN stack. At Masai, I am learning JavaScript, Express.js, Node.js, HTML, MongoDB,React,Redux,CSS. Apart from these technical skills, I am also learning English communication and other soft skills.\nIf you would like to know more, reach out at chandudeore2016@gmail.com.",
+      "id": 2
+    }
+  ]
+}

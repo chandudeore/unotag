@@ -21,7 +21,13 @@ export default function Create() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      localStorage.setItem("user", JSON.stringify(deal));
+      fetch("http://localhost:3001/user", {
+        method: "POST",
+        body: JSON.stringify(deal),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       navigate("/view");
     } catch (err) {
       console.log(err);
