@@ -1,8 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { db } from "../firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Create() {
   const data = {
@@ -13,17 +11,18 @@ export default function Create() {
     description: "",
   };
   const [deal, setDeal] = useState(data);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDeal({ ...deal, [name]: value });
   };
-  const handleCollectionRef = collection(db, "user");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      //   console.log(collection(db, "user"));
-      await addDoc(handleCollectionRef, deal);
+      localStorage.setItem("user", JSON.stringify(deal));
+      navigate("/view");
     } catch (err) {
       console.log(err);
     }
