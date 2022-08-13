@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { db } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
-import { async } from "@firebase/util";
 
 export default function Create() {
   const data = {
@@ -23,8 +22,8 @@ export default function Create() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // await addDoc(handleCollectionRef, deal);
-      console.log(deal);
+      //   console.log(collection(db, "user"));
+      await addDoc(handleCollectionRef, deal);
     } catch (err) {
       console.log(err);
     }
@@ -35,23 +34,38 @@ export default function Create() {
         <form onSubmit={handleSubmit}>
           <label htmlFor="fname">First-Name</label>
           <br />
-          <input type="text" placeholder="Enter Your First Name" name="fname" />
+          <input
+            type="text"
+            placeholder="Enter Your First Name"
+            name="fname"
+            onChange={handleChange}
+          />
           <br />
           <label htmlFor="lname">Last-Name</label>
           <br />
-          <input type="text" placeholder="Enter Your Last Name" name="lname" />
+          <input
+            type="text"
+            placeholder="Enter Your Last Name"
+            name="lname"
+            onChange={handleChange}
+          />
           <br />
           <label htmlFor="email">Email</label>
           <br />
-          <input type="text" placeholder="Enter Your Email" name="email" />
+          <input
+            type="email"
+            onChange={handleChange}
+            placeholder="Enter Your Email"
+            name="email"
+          />
           <br />
           <label htmlFor="dob">Date-Of-Birth</label>
           <br />
-          <input type="date" name="dateOfBirth" />
+          <input type="date" name="dateOfBirth" onChange={handleChange} />
           <br />
           <label htmlFor="description">Short-Description-About-Yourself</label>
           <br />
-          <textarea name="description"></textarea>
+          <textarea name="description" onChange={handleChange}></textarea>
           <div>
             <button type="submit">Save</button>
           </div>
