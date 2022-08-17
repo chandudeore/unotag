@@ -34,7 +34,7 @@ export default function Create() {
     <>
       <div className="container">
         <form onSubmit={handleSubmit}>
-          <div>
+          <div className="form-label">
             <label htmlFor="fname">First-Name &nbsp;</label>
             <br />
             <input
@@ -46,42 +46,58 @@ export default function Create() {
             />
           </div>
           <br />
-          <label htmlFor="lname">Last-Name &nbsp;</label>
-          <input
-            type="text"
-            placeholder="Enter Your Last Name"
-            name="lname"
-            onChange={handleChange}
-            required
-          />
+          <div className="form-label">
+            <label htmlFor="lname">Last-Name &nbsp;</label>
+            <br />
+            <input
+              type="text"
+              placeholder="Enter Your Last Name"
+              name="lname"
+              onChange={handleChange}
+              required
+            />
+          </div>
           <br />
-          <label htmlFor="email">Email &nbsp;</label>
-          <input
-            type="email"
-            onChange={handleChange}
-            placeholder="Enter Your Email"
-            name="email"
-            required
-          />
+          <div className="form-label">
+            <label htmlFor="email">Email &nbsp;</label>
+            <br />
+            <input
+              type="email"
+              onChange={handleChange}
+              placeholder="Enter Your Email"
+              name="email"
+              required
+            />
+          </div>
           <br />
-          <label htmlFor="dob">Date-Of-Birth &nbsp;</label>
-          <input type="date" name="dateOfBirth" onChange={handleChange} />
+          <div className="form-label">
+            <label htmlFor="dob">Date-Of-Birth &nbsp;</label>
+            <br />
+            <input type="date" name="dateOfBirth" onChange={handleChange} />
+          </div>
           <br />
-          <label htmlFor="description">Description &nbsp;</label>
-          <textarea
-            name="description"
-            onChange={handleChange}
-            required
-            placeholder="Intro About Yourself"
-          ></textarea>
+          <div className="form-label">
+            <label htmlFor="description">Description &nbsp;</label>
+            <br />
+            <textarea
+              name="description"
+              onChange={handleChange}
+              required
+              placeholder="Intro About Yourself"
+            ></textarea>
+          </div>
           <div>
-            <button type="submit">Save</button>
+            <button type="submit" className="link2">
+              Save
+            </button>
           </div>
         </form>
       </div>
       {/* Back to Home Page Link */}
       <div>
-        <Link to={"/"}>Home</Link>
+        <Link to={"/"} className="btn2">
+          Home
+        </Link>
       </div>
     </>
   );
