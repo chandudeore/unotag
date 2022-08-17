@@ -1,0 +1,18 @@
+.link{
+    text-decoration: none;
+    color: #ffff;
+}
+.menu{
+    margin: auto;
+    margin-top: 80px;
+}
+.btn{
+    font-size: 25px;
+    padding: 20px 40px;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-left: 20px;
+    background-color: gray;
+    border: 1px solid gray;
+    cursor: pointer;
+}

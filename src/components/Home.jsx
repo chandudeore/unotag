@@ -1,15 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../style/Home.css";
 
 export default function Home() {
   return (
     <div>
-      <div>
-        <button>
-          <Link to="/view">View</Link>
+      <div className="menu">
+        <button className="btn">
+          <Link to="/view" className="link">
+            View
+          </Link>
         </button>
-        <button>
-          <Link to="/create">Create</Link>
+        <button className="btn">
+          <Link to="/create" className="link">
+            Create
+          </Link>
         </button>
       </div>
     </div>

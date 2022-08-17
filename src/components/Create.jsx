@@ -1,6 +1,9 @@
+import { addDoc, collection } from "firebase/firestore";
 import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { db } from "../firebase";
+import "../style/Create.css";
 
 export default function Create() {
   const data = {
@@ -17,17 +20,11 @@ export default function Create() {
     const { name, value } = e.target;
     setDeal({ ...deal, [name]: value });
   };
-
+  const userCollectionRef = collection(db, "user");
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      fetch("http://localhost:3001/user", {
-        method: "POST",
-        body: JSON.stringify(deal),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      await addDoc(userCollectionRef, deal);
       navigate("/view");
     } catch (err) {
       console.log(err);
@@ -35,42 +32,48 @@ export default function Create() {
   };
   return (
     <>
-      <div>
+      <div className="container">
         <form onSubmit={handleSubmit}>
-          <label htmlFor="fname">First-Name</label>
+          <div>
+            <label htmlFor="fname">First-Name &nbsp;</label>
+            <br />
+            <input
+              type="text"
+              placeholder="Enter Your First Name"
+              name="fname"
+              onChange={handleChange}
+              required
+            />
+          </div>
           <br />
-          <input
-            type="text"
-            placeholder="Enter Your First Name"
-            name="fname"
-            onChange={handleChange}
-          />
-          <br />
-          <label htmlFor="lname">Last-Name</label>
-          <br />
+          <label htmlFor="lname">Last-Name &nbsp;</label>
           <input
             type="text"
             placeholder="Enter Your Last Name"
             name="lname"
             onChange={handleChange}
+            required
           />
           <br />
-          <label htmlFor="email">Email</label>
-          <br />
+          <label htmlFor="email">Email &nbsp;</label>
           <input
             type="email"
             onChange={handleChange}
             placeholder="Enter Your Email"
             name="email"
+            required
           />
           <br />
-          <label htmlFor="dob">Date-Of-Birth</label>
-          <br />
+          <label htmlFor="dob">Date-Of-Birth &nbsp;</label>
           <input type="date" name="dateOfBirth" onChange={handleChange} />
           <br />
-          <label htmlFor="description">Short-Description-About-Yourself</label>
-          <br />
-          <textarea name="description" onChange={handleChange}></textarea>
+          <label htmlFor="description">Description &nbsp;</label>
+          <textarea
+            name="description"
+            onChange={handleChange}
+            required
+            placeholder="Intro About Yourself"
+          ></textarea>
           <div>
             <button type="submit">Save</button>
           </div>

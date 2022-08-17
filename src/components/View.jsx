@@ -1,17 +1,19 @@
+import { collection, getDocs } from "firebase/firestore";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { db } from "../firebase";
 
 export default function View() {
   const [user, setUser] = useState([]);
 
+  const userCollectionRef = collection(db, "user");
+
   const getData = async () => {
     try {
-      await fetch("http://localhost:3001/user")
-        .then((res) => res.json())
-        .then((res) => setUser(res))
-        .catch((err) => console.log(err));
+      const data = await getDocs(userCollectionRef);
+      setUser(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     } catch (err) {
       console.log(err);
     }
@@ -19,9 +21,14 @@ export default function View() {
   useEffect(() => {
     getData();
   }, []);
+  // console.log(user);
   return (
     <>
-      <div>
+      <div
+        style={{
+          width: "1000px",
+        }}
+      >
         <table>
           <thead>
             <tr>
@@ -35,7 +42,7 @@ export default function View() {
             {user.map((item) => {
               return (
                 <>
-                  <tr key={item.id}>
+                  <tr>
                     <td>
                       {item.fname} {item.lname}
                     </td>
@@ -50,7 +57,21 @@ export default function View() {
         </table>
       </div>
       <div>
-        <Link to="/">Home</Link>
+        <Link
+          to="/"
+          style={{
+            border: "1px solid gray",
+            cursor: "pointer",
+            textDecoration: "none",
+            color: "#ffffff",
+            background: "gray",
+            padding: "10px 20px",
+            borderRadius: "10px",
+            marginTop: "20px",
+          }}
+        >
+          Home
+        </Link>
       </div>
     </>
   );
